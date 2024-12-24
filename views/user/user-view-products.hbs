@@ -1,0 +1,31 @@
+<section>
+  <!-- Cart Section -->
+  <div class="container mt-5">
+    <div class="row">
+      {{#each products}}
+        <!-- Dynamically creating the cart based on the product added -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card shadow-sm">
+            <img
+              src="{{this.image}}"
+              class="card-img-top"
+              alt="{{this.name}}"
+              style="height: 200px; object-fit: cover;"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title text-truncate">{{this.name}}</h5>
+              <h5 class="card-title text-truncate">Price :-{{this.Price}}</h5>
+              <p class="card-text text-muted">{{this.category}}</p>
+              <!--THIS Id is get in the user.js add-to-cart/ section-->
+              <a
+                href="/add-to-cart/{{this._id}}"
+                class="btn btn-primary btn-sm"
+                onclick="return confirm('{{this.name}} is added to your cart')"
+              >Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

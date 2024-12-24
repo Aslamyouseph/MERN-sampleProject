@@ -1,0 +1,30 @@
+<br>
+<br>
+<h1>LOGIN</h1>
+<br>
+<br>
+<!--if the user is incorrectly enter the name and password then this message will display
+The data for this message came from the user.js file "get/login else block "-->
+{{#if loginErr}}
+<h1>User name or password is incorrect</h1>
+{{/if}}
+<br>
+<form action="/login" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter your Email"
+      name="email"
+    />
+    
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password" name="password"/>
+  </div>
+  <a href="/signup">Create a new account</a><br><br><br>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>

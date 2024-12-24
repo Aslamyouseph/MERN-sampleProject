@@ -1,0 +1,64 @@
+<h1>Edit Product</h1>
+<form action="/admin/edit-product" method="POST" enctype="multipart/form-data">
+  <!--It is the hidden field . in this field the id of the particular product will store-->
+  <div class="mb-3">
+    <input
+      type="hidden"
+      class="form-control"
+      name="id"
+      value="{{editProductId._id}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      value="{{editProductId.name}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">category</label>
+    <input
+      type="text"
+      class="form-control"
+      name="category"
+      value="{{editProductId.category}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Price</label>
+    <input
+      type="text"
+      class="form-control"
+      name="Price"
+      value="{{editProductId.Price}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" name="image">image</label>
+    <!--On this way the image will access from the database-->
+    <img
+      src="{{editProductId.image}}"
+      alt="Product Image"
+      style="width: 100px; height: 100px"
+      id="imgView"
+    />
+    <!--"id="imgView":This is needed to change the old image to new image-->
+    <input
+      type="file"
+      class="form-control"
+      name="image"
+      onchange="viewImage(event)"
+    />
+    <!--"onchange="viewImage(event)":"This is needed to change the old image to new image-->
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!--This section is used when we try to change the old image to new image then in the input field the new image wants to display -->
+<script>
+  function viewImage(event) { let img = document.getElementById("imgView");
+  img.src = URL.createObjectURL(event.target.files[0]); }
+</script>

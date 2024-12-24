@@ -1,0 +1,39 @@
+<br />
+<br />
+<h1>CREATE A NEW ACCOUNT</h1>
+<br />
+<br />
+<form action="/signup" method="post">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      placeholder="Enter your name"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      name="email"
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter your Email"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+      placeholder="Enter your Password"
+    />
+  </div>
+  <a href="/login">Already have an account</a><br /><br /><br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,40 @@
+<section>
+  <div class="container mt-5">
+    <table class="table mt-5" id="userTable">
+      <!-- Giving the id for the table . then only the data table css, js link will work to perform the search, sorting operations -->
+      <thead>
+        <tr>
+          <!-- To include the DataTables library, we need to give the heading for all the tables; it's important then only the searching and sorting operations will work -->
+          <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allUsers}}
+          <tr>
+            <!-- Automatically incrementing index -->
+            <th scope="row">{{@index}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.password}}</td>
+            <td>
+              <a
+                href="/admin/delete-user/{{this._id}}"
+                class="btn btn-danger"
+                onclick="return confirm('Are You sure wants to delete {{this.name}}')"
+              >Delete</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Calling the DataTables operations to perform the search, sorting operations -->
+<script>
+  $(function () { $('#userTable').DataTable(); });
+</script>

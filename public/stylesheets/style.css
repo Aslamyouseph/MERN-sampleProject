@@ -1,0 +1,22 @@
+/* Style for the cart item buttons */
+.cart-item-count {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect for the buttons */
+.cart-item-count:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+/* Optional: Add some space between the buttons */
+.cart-item-count + .cart-item-count {
+  margin-left: 10px;
+}

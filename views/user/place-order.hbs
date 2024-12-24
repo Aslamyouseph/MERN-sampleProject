@@ -1,0 +1,112 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">Checkout</h2>
+  <form action="" id="checkout-form">
+    <div class="row">
+      <!-- Address Section -->
+      <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+          <h4 class="card-title mb-3">Delivery Details</h4>
+          <input type="text" name="userId" id="" value="{{user._id}}" hidden><!--Hiding the user id -->
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea
+              class="form-control"
+              id="address"
+              rows="3"
+              name="address"
+              placeholder="Enter your address"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="pincode" class="form-label">Pincode</label>
+            <input
+              type="text"
+              class="form-control"
+              id="pincode"
+              name="pincode"
+              placeholder="Enter your pincode"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="mobile"
+              name="mobile"
+              placeholder="Enter your mobile number"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="place" class="form-label">Place</label>
+            <input
+              type="text"
+              class="form-control"
+              id="place"
+              name="place"
+              placeholder="Enter your place"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+          <h4 class="card-title mb-3">Payment Details</h4>
+          <div class="mb-3">
+            <label for="totalAmount" class="form-label"><b><u>Total Amount
+                {{totalAmount}}
+                RS</b></u>
+            </label>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="paymentMethod"
+                id="cod"
+                value="cod"
+                checked
+              />
+              <label class="form-check-label" for="cod">Cash on Delivery (COD)</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="paymentMethod"
+                id="online"
+                value="online"
+              />
+              <label class="form-check-label" for="online">Online Payment</label>
+            </div>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!--using JSON for the payment
+This data where is move to the user.js file "place-order" section  and the return data will store in the response variable-->
+<script>
+  $("#checkout-form").submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "/place-order",
+      method: "post",
+      data: $('#checkout-form').serialize(),
+      success: (response) => {
+        if (response.status === true) {
+          // Redirect to the order success page if status is true
+          location.href = "/COD-order-success";
+        }
+      }
+    });
+  });
+</script>

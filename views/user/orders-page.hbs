@@ -1,0 +1,52 @@
+<section>
+  <div class="container mt-5">
+    <table class="table mt-5" id="orderTable">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Date</th>
+          <th scope="col">Address</th>
+          <th scope="col">PinCode</th>
+          <th scope="col">Mobile No</th>
+          <th scope="col">Place</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Payment Method</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+          <!-- Added to match "ViewProduct" button -->
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{this.createdAt}}</td>
+            <td>{{this.deliveryDetails.address}}</td>
+            <td>{{this.deliveryDetails.pincode}}</td>
+            <td>{{this.deliveryDetails.mobile}}</td>
+            <td>{{this.deliveryDetails.place}}</td>
+            <td>{{this.totalAmount}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td>{{this.status}}</td>
+            <td>
+              <a
+                href="/view-ordered-products/{{this._id}}"
+                class="btn btn-primary"
+              >ViewProduct</a>
+            </td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="10">No products available</td>
+            <!-- Updated colspan -->
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Calling the DataTables operations to perform the search, sorting operations -->
+<script>
+  $(function () { $('#orderTable').DataTable(); });
+</script>

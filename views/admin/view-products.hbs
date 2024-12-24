@@ -1,0 +1,60 @@
+<section>
+  <div class="container mt-5">
+    <div class="row">
+      <!--res.render("admin/add-product"); move to this area-->
+      <a href="/admin/add-product" class="btn btn-primary">ADD PRODUCTS</a>
+    </div>
+    <table class="table mt-5" id="productTable">
+      <!-- Giving the id for the table . then only the data table css, js link will work to perform the search, sorting operations -->
+      <thead>
+        <tr>
+          <!-- To include the DataTables library, we need to give the heading for all the tables; it's important then only the searching and sorting operations will work -->
+          <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <!-- Automatically incrementing index -->
+            <th scope="row">{{@index}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.category}}</td>
+            <td>{{this.Price}}</td>
+            <td>
+              <img
+                style="height: 70px; width: 90px"
+                src="{{this.image}}"
+                alt="{{this.name}}"
+              />
+            </td>
+            <td>
+              <a
+                href="/admin/edit-product/{{this._id}}"
+                class="btn btn-primary"
+              >Edit</a>
+              <a
+                href="/admin/delete-product/{{this._id}}"
+                class="btn btn-danger"
+                onclick="return confirm('Are You sure wants to delete {{this.name}}')"
+              >Delete</a>
+            </td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="6">No products available</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Calling the DataTables operations to perform the search, sorting operations -->
+<script>
+  $(function () { $('#productTable').DataTable(); });
+</script>

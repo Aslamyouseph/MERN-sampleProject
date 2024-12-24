@@ -1,0 +1,24 @@
+<h1>Add New Product</h1>
+<form
+  action="/admin/add-product"
+  method="POST"
+  enctype="multipart/form-data"
+><!--After submitting the form it will redirect to the admin.js page-->
+  <div class="mb-3">
+    <label class="form-label">name</label>
+    <input type="text" class="form-control" name="name" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">category</label>
+    <input type="text" class="form-control" name="category" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Price</label>
+    <input type="number" class="form-control" name="Price" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" name="image">image</label>
+    <input type="file" class="form-control" name="image" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

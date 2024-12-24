@@ -1,0 +1,65 @@
+<section>
+  <div class="container mt-5">
+    <table class="table mt-5" id="orderTable">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Date</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Products_Details</th>
+          <th scope="col">Address</th>
+          <th scope="col">PinCode</th>
+          <th scope="col">Mobile No</th>
+          <th scope="col">Place</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Payment Method</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allOrders}}
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{this.createdAt}}</td>
+            <td>{{this.userId.name}}</td>
+            <td>{{this.userId.email}}</td>
+            <td>
+              <ul>
+                {{#each this.products}}
+                  <li>{{this.name}}
+                    (Qty:{{this.quantity}}, Price: ₹{{this.price}})</li>
+                {{/each}}
+              </ul>
+            </td>
+            <td>{{this.deliveryDetails.address}}</td>
+            <td>{{this.deliveryDetails.pincode}}</td>
+            <td>{{this.deliveryDetails.mobile}}</td>
+            <td>{{this.deliveryDetails.place}}</td>
+            <td>₹{{this.totalAmount}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td>{{this.status}}</td>
+            <!--When the admin click the deliver button then the control will move to the admin.js file "updateStatus" section and
+            it will change the status (stored in the database) to shipped-->
+            <form action="/admin/deliverStatus/{{this._id}}" method="POST">
+              <td>
+                <button type="submit" class="btn btn-primary">Deliver</button>
+              </td>
+            </form>
+
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="13" class="text-center">No orders available</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DataTables script to enable search and sorting -->
+<script>
+  $(document).ready(function () { $('#orderTable').DataTable(); });
+</script>

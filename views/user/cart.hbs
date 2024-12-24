@@ -1,0 +1,65 @@
+<section>
+  <div class="container mt-5">
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">&ensp;&ensp; &ensp;Quantity</th>
+          <th scope="col">operation</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <td>
+              <img
+                src="{{this.image}}"
+                alt="{{this.name}}"
+                style="height: 70px; width: 90px;"
+              />
+            </td>
+            <td>{{this.name}}</td>
+            <td>{{this.Price}}</td>
+            <!--Increment or decrement operation are done in here -->
+            <td>
+              <button
+                class="cart-item-count"
+                data-action="increment"
+                data-product-id="{{this._id}}"
+              >+</button>
+              &ensp;&ensp;{{this.quantity}}&ensp;&ensp;
+              <button
+                class="cart-item-count"
+                data-action="decrement"
+                data-product-id="{{this._id}}"
+              >-</button>
+            </td>
+
+            <td>
+              <a
+                href="/delete-from-cart/{{this._id}}"
+                class="btn btn-danger"
+                onclick="return confirm('Are You sure wants to delete {{this.name}}')"
+              >Remove</a>
+            </td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="4">No products found in the cart.</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <hr style="height: 50px" />
+    <h3 class="text-end"><u>Total Price :- Rs. {{totalAmount}}</u></h3>
+    <a
+      href="/place-order"
+      style="position: absolute; right: 190px; margin-top: 20px;"
+      class="btn btn-success"
+    ><b>Place Order</b></a>
+
+  </div>
+</section>
